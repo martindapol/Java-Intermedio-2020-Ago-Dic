@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.domio;
+package com.example.dominio;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
@@ -13,7 +14,7 @@ import java.util.Vector;
  *
  * @author MARTIN
  */
-public class Correo {
+public class Correo implements Serializable{
     private String asunto;
     private String cuerpo;
     private Date fecha;

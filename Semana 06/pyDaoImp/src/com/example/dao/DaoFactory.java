@@ -11,6 +11,6 @@ package com.example.dao;
  */
 public class DaoFactory {
     public static CorreoDAO getCorreoDao(){
-        return new CorreoDAOMemory();
+        return new CorreoDAOFile();
     }
 }

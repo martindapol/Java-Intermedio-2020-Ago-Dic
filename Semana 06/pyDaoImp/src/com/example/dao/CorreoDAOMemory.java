@@ -5,7 +5,7 @@
  */
 package com.example.dao;
 
-import com.example.domio.Correo;
+import com.example.dominio.Correo;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
