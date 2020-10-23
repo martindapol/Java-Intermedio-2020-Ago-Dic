@@ -6,6 +6,7 @@
 package com.example.dao;
 
 import com.example.dominio.Correo;
+import com.example.excepciones.DaoExcepcion;
 import java.util.List;
 
 /**
@@ -13,6 +14,6 @@ import java.util.List;
  * @author MARTIN
  */
 public interface CorreoDAO {
-    void add(Correo correo);
-    List<Correo> findByAsunto(String criterio);
+    void add(Correo correo) throws DaoExcepcion;
+    List<Correo> findByAsunto(String criterio) throws DaoExcepcion;
 }

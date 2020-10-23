@@ -20,7 +20,6 @@ public class CorreoDAOMemory implements CorreoDAO{
 
     public CorreoDAOMemory() {
         bandeja = new LinkedList<>();
-        init();
     }
     
     @Override
@@ -39,11 +38,4 @@ public class CorreoDAOMemory implements CorreoDAO{
         
         return lst;
     }
-    
-    private void init(){
-        bandeja.add(new Correo("Magia!".toUpperCase(), "No lo nombre please!", Calendar.getInstance().getTime(), "Gualicho"));
-        bandeja.add(new Correo("La Magia NO EXISTE!".toUpperCase(), "La programaciín SI!", Calendar.getInstance().getTime(), "Acme"));
-    }
-    
-    
 }

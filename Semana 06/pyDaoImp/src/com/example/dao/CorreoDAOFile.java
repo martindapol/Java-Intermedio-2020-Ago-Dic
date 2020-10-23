@@ -50,7 +50,7 @@ public class CorreoDAOFile implements CorreoDAO{
     }
 
     private List<Correo> readFile() {
-        List<Correo> data = null;
+        List<Correo> data = new ArrayList<>();
         try(FileInputStream fis = new FileInputStream(FILE_NAME);
                 ObjectInputStream ois = new ObjectInputStream(fis)) {
                 data = (List<Correo>) ois.readObject();

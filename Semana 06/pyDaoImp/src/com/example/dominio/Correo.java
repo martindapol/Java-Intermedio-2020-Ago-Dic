@@ -5,10 +5,12 @@
  */
 package com.example.dominio;
 
+import com.example.excepciones.CorreoInvalidoException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -20,11 +22,11 @@ public class Correo implements Serializable{
     private Date fecha;
     private String remitente;
 
-    public Correo(String asunto, String cuerpo, Date fecha, String remitente) {
+    public Correo(String asunto, String cuerpo, Date fecha, String remitente) throws CorreoInvalidoException {
         this.asunto = asunto;
         this.cuerpo = cuerpo;
         this.fecha = fecha;
-        this.remitente = remitente;
+        this.setRemitente(remitente);
     }
 
     public String getAsunto() {
@@ -55,8 +57,12 @@ public class Correo implements Serializable{
         return remitente;
     }
 
-    public void setRemitente(String remitente) {
-        this.remitente = remitente;
+    public void setRemitente(String remitente) throws CorreoInvalidoException{
+        //validación de dominio:
+        if(remitente != null && formatoCorreoValido(remitente))
+            this.remitente = remitente;
+        else
+           throw new CorreoInvalidoException(remitente);
     }
 
     @Override
@@ -67,5 +73,11 @@ public class Correo implements Serializable{
     public Object[] toArray() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         return new Object[]{asunto, cuerpo, sdf.format(fecha), remitente};
+    }
+
+    private boolean formatoCorreoValido(String remitente) {
+        Pattern pattern = Pattern.compile("(\\S+?)\\@(\\S+?)\\.com");
+        Matcher matcher = pattern.matcher(remitente);
+        return matcher.find();
     }
 }
