@@ -5,11 +5,8 @@
  */
 package com.example;
 
-import com.example.dao.CorreoDAO;
-import com.example.dao.CorreoDAOFile;
-import com.example.dominio.Correo;
-import com.example.gui.JFConsulta;
-import java.util.Calendar;
+import com.example.gui.JFLogin;
+import java.io.IOException;
 import javax.swing.UIManager;
 
 /**
@@ -21,12 +18,11 @@ public class Ejecutable {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-       
+    public static void main(String[] args) throws IOException {
         try{
             UIManager.setLookAndFeel("net.sourceforge.napkinlaf.NapkinLookAndFeel");
             //initCorreos();
-            new JFConsulta().setVisible(true);
+            new JFLogin().setVisible(true);
         }catch(Exception e){
             System.out.println("Error. No se puede ejecutar la aplicacón");
         }

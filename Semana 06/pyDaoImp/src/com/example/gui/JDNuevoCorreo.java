@@ -8,6 +8,7 @@ package com.example.gui;
 import com.example.dao.CorreoDAO;
 import com.example.dominio.Correo;
 import com.example.excepciones.CorreoInvalidoException;
+import com.example.excepciones.DaoExcepcion;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -152,7 +153,7 @@ public class JDNuevoCorreo extends javax.swing.JDialog {
                 dao.add(nuevo);
                 JOptionPane.showMessageDialog(this, "Correo enviado!", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
-            }catch(CorreoInvalidoException e){
+            }catch(CorreoInvalidoException |DaoExcepcion e){
                 JOptionPane.showMessageDialog(this, e.getMessage(), "Validación", JOptionPane.ERROR_MESSAGE);
             }   
         }

@@ -5,17 +5,14 @@
  */
 package com.example.dao;
 
+import com.example.dominio.Usuario;
+import com.example.excepciones.DaoExcepcion;
+
 /**
  *
  * @author MARTIN
  */
-public class DaoFactory {
-
-    public static CorreoDAO getCorreoDao() {
-        return new CorreoDAOFile();
-    }
-
-    public static UsuarioDao getUsuarioDao() {
-        return new UsuarioDaoFileImp();
-    }
+public interface UsuarioDao {
+    void create(Usuario u)throws DaoExcepcion;
+    Usuario validate(String n, String p) throws DaoExcepcion;
 }
