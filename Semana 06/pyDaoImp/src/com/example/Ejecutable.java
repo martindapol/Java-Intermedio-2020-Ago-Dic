@@ -20,9 +20,11 @@ public class Ejecutable {
      */
     public static void main(String[] args) throws IOException {
         try{
+           
             UIManager.setLookAndFeel("net.sourceforge.napkinlaf.NapkinLookAndFeel");
             //initCorreos();
             new JFLogin().setVisible(true);
+            
         }catch(Exception e){
             System.out.println("Error. No se puede ejecutar la aplicacón");
         }

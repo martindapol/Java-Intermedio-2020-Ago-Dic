@@ -16,6 +16,7 @@ public class DaoFactory {
     }
 
     public static UsuarioDao getUsuarioDao() {
-        return new UsuarioDaoFileImp();
+        return new UsuarioDaoMySql();
+        //return new UsuarioDaoFileImp();
     }
 }

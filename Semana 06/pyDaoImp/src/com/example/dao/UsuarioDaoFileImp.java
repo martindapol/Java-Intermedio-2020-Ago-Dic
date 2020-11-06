@@ -15,6 +15,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,9 @@ public class UsuarioDaoFileImp implements UsuarioDao {
         Usuario user;
         try (FileInputStream fis = new FileInputStream(FILE_NAME);
                 ObjectInputStream ois = new ObjectInputStream(fis)) {
-
+            
+           
+            
             while (true) {
                 user = (Usuario) ois.readObject();
                 if (user.getNombre().equals(n) && user.getClave().equals(p)) {
