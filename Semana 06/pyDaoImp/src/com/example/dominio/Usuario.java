@@ -16,13 +16,26 @@ public class Usuario implements Serializable{
     private String nombre;
     private String clave;
     private Date ultimoAcceso;
+    private int id;
+    
 
-    public Usuario(String nombre, String clave, Date ultimoAcceso) {
+    public Usuario(String nombre, String clave, Date ultimoAcceso, int id) {
         this.nombre = nombre;
         this.clave = clave;
         this.ultimoAcceso = ultimoAcceso;
+        this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
+    
     public String getNombre() {
         return nombre;
     }

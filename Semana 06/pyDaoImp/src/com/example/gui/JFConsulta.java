@@ -7,12 +7,19 @@ package com.example.gui;
 
 import com.example.dao.CorreoDAO;
 import com.example.dao.DaoFactory;
+import com.example.dao.UsuarioDao;
+import com.example.dao.UsuarioDaoMySql;
+import com.example.dominio.Correo;
 import com.example.dominio.Usuario;
+import com.example.excepciones.DaoExcepcion;
 import com.example.utils.GestorDirectorioActual;
 import java.awt.Image;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,10 +29,10 @@ import javax.swing.table.DefaultTableModel;
  * @author MARTIN
  */
 public class JFConsulta extends javax.swing.JFrame {
-    
+
     private CorreoDAO dao;
     private Usuario user;
-    
+
     /**
      * Creates new form JFConsulta
      */
@@ -37,6 +44,11 @@ public class JFConsulta extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         GestorDirectorioActual.checkDirectorioActual(user.getNombre());
         cargarImagenUsuario(user.getNombre());
+        try {
+            loadTableCorreos();
+        } catch (DaoExcepcion ex) {
+            //no se pudo cargar el inbox...  
+        }
     }
 
     /**
@@ -169,17 +181,17 @@ public class JFConsulta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        if(!jtAsunto.getText().equals("")){
+        if (!jtAsunto.getText().equals("")) {
             //List<Correo> lst = dao.findByAsunto(jtAsunto.getText());
             DefaultTableModel model = new DefaultTableModel();
             model.setColumnIdentifiers(new String[]{"Asunto", "Cuerpo", "Fecha", "From"});
-            
+
             //for (Correo correo : lst) {
-              //  model.addRow(correo.toArray());
+            //  model.addRow(correo.toArray());
             //}
             jtCorreos.setModel(model);
-        }else{
-            JOptionPane.showMessageDialog(this,"Olvidó ingresar un asunto!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Olvidó ingresar un asunto!");
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
@@ -204,15 +216,28 @@ public class JFConsulta extends javax.swing.JFrame {
 
     private void cargarImagenUsuario(String user) {
         Path pathImg = Paths.get(user + "/user.png");
-        
-        if(Files.exists(pathImg)){
+
+        if (Files.exists(pathImg)) {
             ImageIcon imagen = new ImageIcon(pathImg.toAbsolutePath().toString());
             //Crear una imagen a escala respecto del JLabel jlImagen:
-            Image imagenScala = imagen.getImage().getScaledInstance(jlImagen.getWidth(),jlImagen.getHeight(), Image.SCALE_SMOOTH);
+            Image imagenScala = imagen.getImage().getScaledInstance(jlImagen.getWidth(), jlImagen.getHeight(), Image.SCALE_SMOOTH);
             //Asignar imagen ajustada al JLabel
             jlImagen.setIcon(new ImageIcon(imagenScala));
             //Mostrar el nombre del usuario logueado
             jlUser.setText(user);
         }
+    }
+
+    private void loadTableCorreos() throws DaoExcepcion {
+        UsuarioDao userDao = new UsuarioDaoMySql();
+        List<Correo> lst = userDao.inBox(user.getId());
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Asunto", "Cuerpo", "Fecha", "From"});
+
+        for (Correo correo : lst) {
+            model.addRow(correo.toArray());
+        }
+        jtCorreos.setModel(model);
+
     }
 }

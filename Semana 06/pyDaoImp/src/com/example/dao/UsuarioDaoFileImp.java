@@ -5,6 +5,7 @@
  */
 package com.example.dao;
 
+import com.example.dominio.Correo;
 import com.example.dominio.Usuario;
 import com.example.excepciones.DaoExcepcion;
 import java.io.EOFException;
@@ -96,5 +97,10 @@ public class UsuarioDaoFileImp implements UsuarioDao {
             } catch (IOException e) {
             }
         }
+    }
+
+    @Override
+    public List<Correo> inBox(int id) throws DaoExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

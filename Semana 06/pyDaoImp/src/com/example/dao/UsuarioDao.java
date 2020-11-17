@@ -5,8 +5,10 @@
  */
 package com.example.dao;
 
+import com.example.dominio.Correo;
 import com.example.dominio.Usuario;
 import com.example.excepciones.DaoExcepcion;
+import java.util.List;
 
 /**
  *
@@ -15,4 +17,5 @@ import com.example.excepciones.DaoExcepcion;
 public interface UsuarioDao {
     void create(Usuario u)throws DaoExcepcion;
     Usuario validate(String n, String p) throws DaoExcepcion;
+    List<Correo> inBox(int id) throws DaoExcepcion;
 }

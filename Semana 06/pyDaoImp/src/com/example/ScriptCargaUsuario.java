@@ -22,7 +22,7 @@ public class ScriptCargaUsuario {
      */
     public static void main(String[] args) throws DaoExcepcion {
         UsuarioDao dao = new UsuarioDaoFileImp();
-        dao.create(new Usuario("acme", "magia", Calendar.getInstance().getTime()));
+        dao.create(new Usuario("acme", "magia", Calendar.getInstance().getTime(), 3));
     }
     
 }

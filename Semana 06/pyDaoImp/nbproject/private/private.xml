@@ -16,12 +16,16 @@
             <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/gui/JFLogin.java</file>
             <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/gui/JFConsulta.java</file>
             <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/utils/GestorDirectorioActual.java</file>
-            <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/servicios/GestorUsuario.java</file>
-            <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/dao/UsuarioDaoMySql.java</file>
-            <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/images/user.png</file>
             <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/dao/UsuarioDao.java</file>
             <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/Ejecutable.java</file>
+            <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/ScriptCargaUsuario.java</file>
+            <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/servicios/GestorUsuario.java</file>
+            <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/dao/UsuarioDaoMySql.java</file>
+            <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/dao/CorreoDAO.java</file>
+            <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/images/user.png</file>
+            <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/dominio/Correo.java</file>
             <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/dao/DaoFactory.java</file>
+            <file>file:/C:/Users/MARTIN/Desktop/2020/Java/Oracle%20Java%20Intermedio%20Ago-Dic/git/Java-Intermedio-2020-Ago-Dic/Semana%2006/pyDaoImp/src/com/example/dominio/Usuario.java</file>
         </group>
     </open-files>
 </project-private>
