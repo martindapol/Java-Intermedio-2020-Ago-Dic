@@ -5,10 +5,10 @@
  */
 package com.example.gui;
 
-import com.example.dao.CorreoDAO;
 import com.example.dominio.Correo;
 import com.example.excepciones.CorreoInvalidoException;
 import com.example.excepciones.DaoExcepcion;
+import com.example.servicios.GestorCorreo;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -18,16 +18,16 @@ import javax.swing.JOptionPane;
  * @author MARTIN
  */
 public class JDNuevoCorreo extends javax.swing.JDialog {
-    private CorreoDAO dao;
+    private GestorCorreo gestor;
 
     /**
      * Creates new form JDNuevoCorreo
      */
-    public JDNuevoCorreo(java.awt.Frame parent, boolean modal, CorreoDAO dao) {
+    public JDNuevoCorreo(java.awt.Frame parent, boolean modal, GestorCorreo gestor) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.dao = dao;
+        this.gestor = gestor;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         jtFecha.setText(sdf.format(Calendar.getInstance().getTime()));
     }

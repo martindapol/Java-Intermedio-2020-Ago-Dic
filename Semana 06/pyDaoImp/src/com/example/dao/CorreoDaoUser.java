@@ -5,17 +5,15 @@
  */
 package com.example.dao;
 
+import com.example.dominio.Correo;
+import com.example.excepciones.DaoExcepcion;
+import java.util.List;
+
 /**
  *
  * @author MARTIN
  */
-public class DaoFactory {
-
-    public static CorreoDaoUser getCorreoDao() {
-        return new CorreoDAOMySql();
-    }
-
-    public static UsuarioDao getUsuarioDao() {
-        return new UsuarioDaoMySql();
-    }
+public interface CorreoDaoUser extends CorreoDAO{
+     
+     List<Correo> findByUsuario(int usuario) throws DaoExcepcion;
 }

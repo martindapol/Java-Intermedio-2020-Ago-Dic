@@ -17,5 +17,4 @@ import java.util.List;
 public interface UsuarioDao {
     void create(Usuario u)throws DaoExcepcion;
     Usuario validate(String n, String p) throws DaoExcepcion;
-    List<Correo> inBox(int id) throws DaoExcepcion;
 }

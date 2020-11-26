@@ -98,9 +98,4 @@ public class UsuarioDaoFileImp implements UsuarioDao {
             }
         }
     }
-
-    @Override
-    public List<Correo> inBox(int id) throws DaoExcepcion {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

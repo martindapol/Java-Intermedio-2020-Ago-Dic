@@ -7,17 +7,14 @@ package com.example.dao;
 
 import com.example.dominio.Correo;
 import com.example.dominio.Usuario;
-import com.example.excepciones.CorreoInvalidoException;
 import com.example.excepciones.DaoExcepcion;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -27,16 +24,26 @@ public class UsuarioDaoMySql implements UsuarioDao {
 
     @Override
     public void create(Usuario u) throws DaoExcepcion {
-        //TODO: completar con INSERT INTO
+        String query = "INSERT INTO Usuario (id_usuario, n_usuario, password, ult_acceso)"
+                + " VALUES(?,?,?,?) ";
+
+        try (Connection cnn = DriverManager.getConnection("jdbc:mysql://localhost:3333/correosDB?serverTimezone=UTC", "111mil", "111mil");
+                PreparedStatement stmt = cnn.prepareStatement(query)) {
+            stmt.setInt(1, u.getId());
+            stmt.setString(2, u.getNombre());
+            stmt.setString(3, u.getClave());
+            stmt.setDate(4, new Date(u.getUltimoAcceso().getTime()));
+
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            throw new DaoExcepcion("Error de acceso a datos!", ex);
+        }
+
     }
 
     @Override
     public Usuario validate(String n, String p) throws DaoExcepcion {
         Usuario oUsuario = null;
-        //JDBC: Java Data Base Connectivity-->manera standar de acceder a una BD
-        //con JAVA
-        
-        
         String query = "SELECT *"
                 + " FROM usuarios "
                 + " WHERE n_usuario=? "
@@ -56,31 +63,5 @@ public class UsuarioDaoMySql implements UsuarioDao {
         }
 
         return oUsuario;
-    }
-
-    @Override
-    public List<Correo> inBox(int id) throws DaoExcepcion {
-        List<Correo> lst = null;
-        String query = "SELECT *"
-                + " FROM correos"
-                + " WHERE id_usuario = ?";
-
-        try (Connection cnn = DriverManager.getConnection("jdbc:mysql://localhost:3333/correosDB?serverTimezone=UTC&useSS=false", "111mil", "111mil");
-                PreparedStatement stmt = cnn.prepareStatement(query)) {
-            stmt.setInt(1, id);
-
-            ResultSet rs = stmt.executeQuery(query);
-            Correo oCorreo = null;
-            while (rs.next()) {
-                oCorreo = new Correo(rs.getString(2), rs.getString(3), rs.getDate(6), rs.getString(4));
-                lst.add(oCorreo);
-            }
-        } catch (SQLException ex) {
-            throw new DaoExcepcion("Error de acceso a datos!", ex);
-        } catch (CorreoInvalidoException ex) {
-            throw new DaoExcepcion("Correo incorrecto!", ex);
-        }
-
-        return lst;
     }
 }
