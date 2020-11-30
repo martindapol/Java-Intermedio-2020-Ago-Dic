@@ -24,7 +24,7 @@ public class Ejecutable {
             UIManager.setLookAndFeel("net.sourceforge.napkinlaf.NapkinLookAndFeel");
             //initCorreos();
             new JFLogin().setVisible(true);
-            
+            System.out.println("Termino el main()!");
         }catch(Exception e){
             System.out.println("Error. No se puede ejecutar la aplicacón");
         }
