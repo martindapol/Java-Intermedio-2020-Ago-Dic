@@ -30,10 +30,10 @@ public class Productor extends Thread {
     @Override
     public void run() {
         Random r = new Random();
-
-        for (int i = 0; i < 10; i++) {
+        int c = 0;
+        while (c < 10) {
             try {
-                Thread.sleep(new Random().nextInt(10) * 1000);
+                Thread.sleep(new Random().nextInt(10) * 100);
                 //simulo tiempo de producir el item
             } catch (InterruptedException e) {
             }
@@ -41,10 +41,13 @@ public class Productor extends Thread {
             int cod = r.nextInt(100);
             Item item = new Item(cod, "Item" + cod);
             jta.append("\nProductor deja: " + item);
-            synchronized (jpb) {
-                jpb.setValue(oCarrito.getPorcentajeOcupado());
+
+            if (oCarrito.ponerItem(item)) {
+                c++;
+                synchronized (jpb) {
+                    jpb.setValue(oCarrito.getPorcentajeOcupado());
+                }
             }
-            oCarrito.ponerItem(item);
-        }
+        }//fin while...
     }
 }

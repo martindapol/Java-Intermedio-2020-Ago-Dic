@@ -32,19 +32,24 @@ public class Consumidor extends Thread {
 
     @Override
     public void run() {
-        for (int i = 0; i < 10; i++) {
+        int c = 10;
+        while (c > 0) {
             try {
-                Thread.sleep(new Random().nextInt(10) * 1000);
+                Thread.sleep(new Random().nextInt(10) * 100);
                 //simulo tiempo de producir el item
             } catch (InterruptedException e) {
             }
 
             Item item = oCarrito.sacarItem();
-            jta.append("\nConsumidor toma: " + item);
-            synchronized (jpb) {
-                jpb.setValue(oCarrito.getPorcentajeOcupado());
+            if (item != null) {
+                c--;
+                jta.append("\nConsumidor toma: " + item);
+                synchronized (jpb) {
+                    jpb.setValue(oCarrito.getPorcentajeOcupado());
+                }
             }
-        }
+        }//fin de la vida del hilo
+        
         jb.setEnabled(true);
         jta.append("\nSimulación terminada!");
     }
